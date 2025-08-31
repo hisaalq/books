@@ -31,9 +31,6 @@ export const createAuthor = async (req: Request, res: Response, next: NextFuncti
 export const updateAuthor = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const author = await Author.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate("books");
-        if (req.body.books) {
-            await Author.findByIdAndUpdate(req.params.id, { $push: { books: req.body.books } });
-        }
         res.status(200).json({ message: "Author updated successfully", author });
     } catch (error) {
         next(error);

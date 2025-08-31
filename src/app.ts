@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/authors", authorsRouter);
-app.use("/api/categories", categoryRouter);
+app.use("/authors", authorsRouter);
+app.use("/category", categoryRouter);
 
 
 app.listen(process.env.PORT, () => {
